@@ -1,13 +1,11 @@
-sudo: required # we tell travis that we need sudo level persmissions to execute this build
+sudo: required
 language: generic
 
 services: 
-  - docker # step 1
+  - docker
 
-# a series of commands that are executed before the tests are run
 before_install:
-  - docker build -t wartynas/docker-react -f Dockerfile.dev . # step 2
+  - docker build -t wartynas/docker-react -f Dockerfile.dev .
 
-# this section contains a list of commands that need to be executed in order to run tests
 script:
-  - docker run -e CI=true wartynas/docker-react npm run test # step 3
+  - docker run -e CI=true wartynas/docker-react npm run test
